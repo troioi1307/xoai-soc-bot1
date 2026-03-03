@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-const TOKEN = "8580752431:AAFJ337EXpiIlh2SAwtVZ930OC_GRkvIBm0";
+const TOKEN = process.env.TOKEN; // lấy từ Render Environment
 const PORT = process.env.PORT || 3000;
 
 app.post("/webhook", async (req, res) => {
@@ -17,7 +17,7 @@ app.post("/webhook", async (req, res) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
-        text: "Tiệm Nhà Xoài Sóc đã nhận: " + text
+        text: "🥭 Tiệm Nhà Xoài Sóc đã nhận: " + text
       })
     });
   }
